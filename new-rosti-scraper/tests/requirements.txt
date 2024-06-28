@@ -1,0 +1,6 @@
+pytest
+boto3
+botocore
+beautifulsoup4
+lxml
+requests

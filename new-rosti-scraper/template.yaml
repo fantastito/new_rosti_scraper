@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  new-rosti-scraper
+
+  A basic function developed from a sample SAM template to check for rosti and send an email
+
+
+Globals:
+  Function:
+    Timeout: 60
+
+Resources:
+  RostiScraperFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: rosti_scraper/
+      Handler: app.lambda_handler
+      Runtime: python3.11
+      Architectures:
+        - x86_64
+      Role: arn:aws:iam::339713187712:role/Rosti_scraper_SES_access
+      Environment:
+        Variables:
+          SENDER_EMAIL: 'simon.budden@gmail.com'
+          RECIPIENT_EMAIL: 'simon.budden@gmail.com'
+      Events:
+        WeeklyTrigger:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 9 ? * MON *)
+    
+    Metadata:
+        BuildMethod: python3.11
+        BuildProperties:
+          PipDependencies:
+           - requirements.txt
+
+Outputs:
+  RostiScraperFunction:
+    Description: "Rosti Scraper Lambda Function ARN"
+    Value: !GetAtt RostiScraperFunction.Arn
