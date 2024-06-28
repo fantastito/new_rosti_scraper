@@ -26,3 +26,6 @@ You'll need to:
 - understand what robot.txt files are
 - make friends with AWS IAM to manage permissions for your lambda function to send an email
 - set up AWS Simple Email Service to send an email
+
+# #Improve
+AWS Lambda provides 'layers' that functions can use; if I'd got my script working via .zip upload, I would have liked run the dependencies from a layer, allowing for reuse with other projects. I might also have seperated out the logic inside my app.py file, spliting 'send email' and 'web scrape' into two functions.
