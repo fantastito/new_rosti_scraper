@@ -10,23 +10,19 @@ As a user, I'd like to recieve a notification when I can buy rösti in the super
 A cron expression triggers an AWS Lambda script once a week; BeautifulSoup checks [Lidl's offers page](https://www.lidl.co.uk/c/food-offers/s10023092) to see if this week is 'Alpen Fest', when rösti is normally sold, returning an appropriate subject and email body; this is passed to AWS Simple Email Service and lands in my inbox.
 
 # What didn't work?
-Fail messages are central to all projects
+The original rösti_scraper was written in the gaps between childcare over a weekend. I hoped to take advantage of the great benefit of serverless computing—simply uploading a script and clicking run. Quickly (naturally), I ran into trouble: on AWS Lambda, my code didn't have access to the BeautifulSoup library, or any other dependencies.
 
-As with most projects I attempt
-
-The great benefit of serverless computing, simply uploading a script and clicking run, is that it's simple and lightweight. So I started by writing a single .py file and I quickly (naturally) ran into trouble: running on AWS Lambda, my code didn't have access to the BeautifulSoup library, or any other dependencies.
-
-I followed instructions and tutorials—which described how I needed to create a folder, install dependencies in there, zip and upload—but I couldn't get this solution to work.
+I followed instructions and tutorials (all I needed to do was install the dependencies inside a folder, zip and upload it) but I couldn't get this solution to work.
 
 In the end I tried another route: containerising my code with Docker and uploading. This solution has a larger footprint but brings the stability of a framework. Jonathan Davies' tutorial on [developing lambdas in VS Code using AWS SAM](https://www.youtube.com/watch?v=mhdX4znMd2Q) was quick and clear, swiftly setting up a 'Hello world' template.
 
 With this starting point I could then adapt the template.yaml, app.py and requirements.txt to achieve my goal.
 
 # What if I'd like to do this?
-Depending on familiarity, the usual tools (Youtube, ChatGPT, reddit and Google) provide most answers and you could start writing code in AWS Lambda right away, though I'd recommend [Jonathan Davies' tutorial](https://www.youtube.com/watch?v=mhdX4znMd2Q).
+Depending on familiarity and goals, the usual tools (Youtube, ChatGPT, reddit and Google) provide most answers and you could start writing code in AWS Lambda right away, though I'd recommend [Jonathan Davies' tutorial](https://www.youtube.com/watch?v=mhdX4znMd2Q).
 
 You'll need to:
 - play around with BeautifulSoup
-- understand what a robot.txt file is
+- understand what robot.txt files are
 - make friends with AWS IAM to manage permissions for your lambda function to send an email
 - set up AWS Simple Email Service to send an email
