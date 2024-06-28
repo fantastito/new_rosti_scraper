@@ -19,7 +19,7 @@ In the end I tried another route: containerising my code with Docker and uploadi
 With this starting point I could then adapt the template.yaml, app.py and requirements.txt to achieve my goal.
 
 # What if I'd like to do this?
-Depending on familiarity and goals, the usual tools (Youtube, ChatGPT, reddit and Google) provide most answers and you could start writing code in AWS Lambda right away, though I'd recommend [Jonathan Davies' tutorial](https://www.youtube.com/watch?v=mhdX4znMd2Q).
+Depending on familiarity and goals, the usual tools provide most answers and you could start writing code in AWS Lambda right away, though I'd recommend [Jonathan Davies' tutorial](https://www.youtube.com/watch?v=mhdX4znMd2Q).
 
 You'll need to:
 - play around with BeautifulSoup
